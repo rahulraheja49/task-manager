@@ -1,0 +1,12 @@
+<ion-app>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="primary">
+        <span (click)="logout()" title="Log out" *ngIf="showLogout">
+          <ion-icon name="log-out-outline"></ion-icon>
+        </span>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>

@@ -1,0 +1,46 @@
+<ion-content>
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="login()"
+    novalidate
+    (keyup.enter)="login()"
+  >
+    <ion-grid style="margin-top: 100px">
+      <ion-row color="primary" class="ion-justify-content-center">
+        <ion-col size-md="6" size-lg="4" size-xs="12" class="ion-padding">
+          <div class="ion-text-center padding-top">
+            <h2>Log in to Task Manager</h2>
+          </div>
+          <div class="ion-padding">
+            <ion-item>
+              <ion-input
+                formControlName="username"
+                type="text"
+                placeholder="Email"
+                title="Email"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                formControlName="password"
+                type="password"
+                placeholder="Password"
+                title="Password"
+                required
+              ></ion-input>
+            </ion-item>
+          </div>
+          <div class="ion-padding-horizontal">
+            <ion-button size="large" type="submit" expand="block"
+              >Log in</ion-button
+            >
+          </div>
+          <div class="ion-padding ion-margin-horizontal">
+            Don't have an account? <a routerLink="/register">Register</a> now
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

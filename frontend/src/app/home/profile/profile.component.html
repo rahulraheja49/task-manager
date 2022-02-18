@@ -1,0 +1,22 @@
+<ion-content fullscreen="true" slot="fixed">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-md="6" size-lg="4" size-xs="12" class="ion-padding">
+        <div class="card">
+          <div class="header">
+            <div class="avatar">
+              <img src="assets/img/user_profile.png" />
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="user-meta ion-text-center">
+              <h3 class="name">{{ user?.fullName }}</h3>
+              <ion-icon name="mail-outline"></ion-icon>
+              <h5 class="contact">{{ user?.email }}</h5>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

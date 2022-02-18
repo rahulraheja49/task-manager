@@ -1,0 +1,18 @@
+<ion-content [fullscreen]="true"> </ion-content>
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom" style="height: 10%">
+    <ion-tab-button tab="profile">
+      <ion-icon name="person-circle"></ion-icon>
+      <ion-label>{{user?.fullName}}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="new-task" class="ion-tab-button">
+      <ion-icon name="add-circle-outline"></ion-icon>
+      <ion-label>Create Task</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="tasks">
+      <ion-icon name="briefcase-outline"></ion-icon>
+      <ion-label>Tasks</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
