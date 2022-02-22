@@ -1,3 +1,36 @@
 <ion-content>
-  <p>new-task works!</p>
+  <form
+    [formGroup]="newTaskForm"
+    (ngSubmit)="submit()"
+    novalidate
+    (keyup.enter)="submit()"
+  >
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div style="padding-left: 30px">
+            <h2>Create a New Task</h2>
+            <h4>Enter Task Details</h4>
+          </div>
+          <div>
+            <ion-item>
+              <ion-label color="medium" position="floating">Title</ion-label>
+              <ion-input formControlName="title" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label color="medium" position="floating"
+                >Description</ion-label
+              >
+              <ion-input formControlName="description" type="text"></ion-input>
+            </ion-item>
+          </div>
+          <div class="ion-padding">
+            <ion-button size="large" type="submit" expand="block"
+              >Submit</ion-button
+            >
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

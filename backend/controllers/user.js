@@ -4,14 +4,6 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const generateToken = require("../helpers/generateJWT");
 
-const shortenUser = (user) => {
-  return {
-    fullName: user.fullName,
-    email: user.email,
-    id: user._id,
-  };
-};
-
 exports.signup = async (req, res) => {
   try {
     const saltPassword = await bcrypt.genSalt(10);

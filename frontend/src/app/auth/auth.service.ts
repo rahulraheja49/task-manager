@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { Storage } from '@ionic/storage-angular';
-import { AuthModule } from './auth.module';
 import { tap } from 'rxjs/operators';
 
 import { BackendConnectService } from '../_helpers/backend-connect.service';
@@ -15,7 +14,6 @@ import { AuthResponse } from './auth-response';
 export class AuthService {
   authSubject = new BehaviorSubject(false);
   private _storage: Storage | null = null;
-  private httpOptions: object = {};
 
   constructor(
     private httpClient: HttpClient,
@@ -31,7 +29,6 @@ export class AuthService {
     this._storage = storage;
     if (await this.storage.get('USER')) {
       this.authSubject.next(true);
-      this.httpOptions = await this.getHeaderOptions();
     } else this.authSubject.next(false);
   }
 
@@ -40,7 +37,7 @@ export class AuthService {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token,
+        'x-auth-token': token,
       }),
     };
   }
@@ -72,7 +69,6 @@ export class AuthService {
         tap(async (res: AuthResponse) => {
           if (res.user) {
             await this.setUserDetailsInStorage(res);
-            this.httpOptions = await this.getHeaderOptions();
             this.authSubject.next(true);
           }
         })
@@ -86,7 +82,6 @@ export class AuthService {
         tap(async (res: AuthResponse) => {
           if (res.user) {
             await this.setUserDetailsInStorage(res);
-            this.httpOptions = await this.getHeaderOptions();
             this.authSubject.next(true);
           }
         })

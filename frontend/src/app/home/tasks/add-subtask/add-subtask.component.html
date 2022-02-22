@@ -1,0 +1,63 @@
+<ion-content>
+  <ion-grid>
+    <ion-row color="primary" class="ion-justify-content-center">
+      <ion-col
+        size-md="8"
+        size-lg="6"
+        size-xs="12"
+        class="ion-padding"
+        *ngIf="task"
+      >
+        <h2>Title: {{ task?.title }}</h2>
+        <h4>Description: {{ task?.description }}</h4>
+        <div>
+          <h5>Subtasks:</h5>
+          <div class="ion-padding-horizontal" style="margin-top: 20px">
+            <ion-card *ngFor="let subtask of task?.subtasks">
+              <ion-card-header>
+                <ion-row style="display: flex; justify-content: space-between">
+                  <ion-card-title>{{ subtask.description }}</ion-card-title>
+                  <div
+                    (click)="markCompleted(subtask._id)"
+                    *ngIf="!subtask.complete"
+                  >
+                    <ion-icon name="checkmark" size="large"></ion-icon>
+                  </div>
+                  <ion-text *ngIf="subtask.complete" color="success"
+                    >COMPLETE</ion-text
+                  >
+                </ion-row>
+              </ion-card-header>
+              <ion-card-content>
+                {{ subtask.createdAt | date: "short" }}
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+        <h2 style="padding-top: 30px">Add Subtask</h2>
+        <ion-row>
+          <ion-col size="10">
+            <ion-label color="medium" position="floating"
+              >Description</ion-label
+            >
+            <ion-input
+              type="text"
+              name="description"
+              ngDefaultControl
+              placeholder="Subtask Description"
+              [(ngModel)]="description"
+              required
+              style="border-bottom: 1px solid gray"
+            ></ion-input>
+          </ion-col>
+          <ion-col
+            (click)="addSubtask()"
+            style="display: flex; justify-content: center; align-items: center"
+          >
+            <ion-icon name="add" size="large"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

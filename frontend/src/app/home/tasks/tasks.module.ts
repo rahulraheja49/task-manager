@@ -1,19 +1,14 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TaskComponent } from './task/task.component';
+import { AddSubtaskComponent } from './add-subtask/add-subtask.component';
+import { MyTasksComponent } from './my-tasks/my-tasks.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CurrentTasksComponent } from './current-tasks/current-tasks.component';
-import { CompletedTasksComponent } from './completed-tasks/completed-tasks.component';
-import { ArchivedTasksComponent } from './archived-tasks/archived-tasks.component';
 import { TasksRoutingModule } from './tasks-routing.module';
-import { TasksService } from './tasks.service';
 
 @NgModule({
-  declarations: [
-    ArchivedTasksComponent,
-    CompletedTasksComponent,
-    CurrentTasksComponent,
-  ],
-  imports: [CommonModule, TasksRoutingModule],
-  providers: [TasksService],
+  declarations: [MyTasksComponent, AddSubtaskComponent, TaskComponent],
+  imports: [CommonModule, TasksRoutingModule, FormsModule, ReactiveFormsModule],
 })
 export class TasksModule {}

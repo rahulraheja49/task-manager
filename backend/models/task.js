@@ -7,24 +7,22 @@ const taskSchema = new mongoose.Schema(
       required: true,
       ref: "user",
     },
+    title: {
+      type: String,
+    },
     description: {
       type: String,
     },
     type: {
       type: String,
       required: true,
-      enum: ["new", "inprogress", "completed", "archive"],
+      enum: ["new", "inprogress", "completed"],
+      default: "new",
     },
     subtasks: [
       {
-        description: {
-          type: String,
-          required: true,
-        },
-        complete: {
-          type: Boolean,
-          default: false,
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "subtask",
       },
     ],
   },

@@ -1,0 +1,57 @@
+<ion-content>
+  <ion-grid>
+    <ion-row color="primary" class="ion-justify-content-center">
+      <ion-col size-md="8" size-xs="12">
+        <div class="ion-text-center">
+          <h2>Tasks</h2>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="width: 22%">
+        <h5 style="display: flex; justify-content: center">New Tasks</h5>
+        <ion-row *ngFor="let newTask of tasks?.newTasks">
+          <app-task
+            style="width: 95%"
+            (click)="openTask(newTask._id)"
+            [config]="{ task: newTask }"
+          >
+          </app-task>
+        </ion-row>
+      </ion-col>
+      <ion-col style="width: 22%">
+        <h5 style="display: flex; justify-content: center">Inprogress Tasks</h5>
+        <ion-row *ngFor="let inprogressTask of tasks?.inprogressTasks">
+          <app-task
+            style="width: 95%"
+            (click)="openTask(inprogressTask._id)"
+            [config]="{ task: inprogressTask }"
+          >
+          </app-task>
+        </ion-row>
+      </ion-col>
+      <ion-col style="width: 22%">
+        <h5 style="display: flex; justify-content: center">Archived Tasks</h5>
+        <ion-row *ngFor="let archivedTask of tasks?.archivedTasks">
+          <app-task
+            style="width: 95%"
+            (click)="openTask(archivedTask._id)"
+            [config]="{ task: archivedTask }"
+          >
+          </app-task>
+        </ion-row>
+      </ion-col>
+      <ion-col style="width: 22%">
+        <h5 style="display: flex; justify-content: center">Completed Tasks</h5>
+        <ion-row *ngFor="let completedTask of tasks?.completedTasks">
+          <app-task
+            style="width: 95%"
+            (click)="openTask(completedTask._id)"
+            [config]="{ task: completedTask }"
+          >
+          </app-task>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
